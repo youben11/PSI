@@ -29,3 +29,11 @@ def sign(key, pt):
 def new_bf():
     mode = pybloom_live.ScalableBloomFilter.SMALL_SET_GROWTH
     return pybloom_live.ScalableBloomFilter(mode=mode)
+
+
+def save_bf(bf, f):
+    bf.tofile(f)
+
+
+def load_bf(f):
+    return pybloom_live.ScalableBloomFilter.fromfile(f)
