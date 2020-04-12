@@ -20,11 +20,11 @@ def generate_random_factors(public_key):
     return random_factors
 
 
-def blind_batch(Y, random_factors):
+def blind_batch(Y, random_factors, n):
     A = []
     for y, rf in zip(Y, random_factors):
         r_encrypted = rf[1]
-        A.append(y * r_encrypted)
+        A.append((y * r_encrypted) % n)
     return A
 
 

@@ -53,7 +53,7 @@ def main(X, Y, eps=utils.eps, m=utils.m, e=utils.e):
     size = f.tell()
     print(f"[SETUP] server --> client: {size} bytes")
     # ONLINE
-    A = client.blind_batch(Y, random_factors)
+    A = client.blind_batch(Y, random_factors, public_key.n)
     print(f"[ONLINE] client <--> server (x2): {len(A) * m // 8} bytes")
     B = server.sign_batch(private_key, A)
     X_Y = client.intersect(Y, B, random_factors, bf, public_key)
